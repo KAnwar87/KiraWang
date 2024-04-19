@@ -1,0 +1,72 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    /* color-scheme: light dark; */
+    /* color: rgba(255, 255, 255, 0.87); */
+    /* background-color: whitesmoke; */
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* max-width: max-content; */
+    margin: 3% auto;
+    /* padding: 2rem; */
+    text-align: center;
+}
+
+/* body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+} */
+
+.ringgitSen {
+    width: 70px;
+}
+
+.row {
+    display: flex; /* Use flexbox */
+    flex-wrap: nowrap; /* Ensure items don't wrap to the next line */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+    align-items: center; /* Center items vertically */
+    border: 1px solid gray;
+}
+
+@media screen and (min-width: 768px) {
+    .row {
+        margin: 0 25%; /* Apply margin for tablet and larger media */
+    }
+}
+
+footer {
+    position: fixed;
+    background-color:cadetblue;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1px;
+    text-align: center;
+    color:azure;
+    font-size: small;
+}
+
+.modal {
+    color: black;
+    font-size: initial;
+}
+
+a {
+    font-weight: 500;
+    color:olive;
+    text-decoration: inherit;
+}
+
+a:hover {
+    color:cadetblue;
+}
