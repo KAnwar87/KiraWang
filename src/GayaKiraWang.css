@@ -14,7 +14,6 @@
 
     /* max-width: max-content; */
     margin: 3% auto;
-    /* padding: 2rem; */
     text-align: center;
 }
 
@@ -26,23 +25,81 @@
     min-height: 100vh;
 } */
 
+@media screen and (min-width: 768px) {
+    .row {
+        margin: 0 30%; /* Apply margin for tablet and larger media */
+    }
+}
+
+.switchButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* Adjust the margin as needed */
+}
+
+.form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .ringgitSen {
     width: 70px;
 }
 
 .row {
-    display: flex; /* Use flexbox */
-    flex-wrap: nowrap; /* Ensure items don't wrap to the next line */
-    justify-content: space-between; /* Distribute items evenly along the main axis */
-    align-items: center; /* Center items vertically */
-    border: 1px solid gray;
+    display:flexbox; 
+    /* Use flexbox */
+
+    flex-wrap: nowrap; 
+    /* Ensure items don't wrap to the next line */
+
+    /* justify-content:space-evenly;  */
+    /* Distribute items evenly along the main axis */
+    /* justify-content: center; */
+
+    align-items: center; 
+    /* Center items vertically */
+    gap: 5px;
+    padding: 3px;
 }
 
-@media screen and (min-width: 768px) {
-    .row {
-        margin: 0 25%; /* Apply margin for tablet and larger media */
-    }
+.minus, .plus {
+    max-width: fit-content;
 }
+
+/* .col {
+    
+    border: 0.5px solid;
+} */
+
+.duit {
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: nowrap;
+    /* width: auto; */
+    min-width: 150px;
+}
+.gambarDuit {
+    height: 27px;
+}
+
+.banknote, .denomination {
+    display: inline-block;
+}
+
+.darabInput {
+    min-width: 150px;
+}
+
+.subAmount {
+    text-align: right;
+    min-width: 80px;
+    max-width: 150px;
+}
+
+
 
 footer {
     position: fixed;
@@ -55,7 +112,6 @@ footer {
     color:azure;
     font-size: small;
 }
-
 .modal {
     color: black;
     font-size: initial;
@@ -66,7 +122,14 @@ a {
     color:olive;
     text-decoration: inherit;
 }
-
 a:hover {
     color:cadetblue;
+}
+
+.credit a{
+    color: azure !important;
+    font-size: x-small;
+}
+.credit a:hover{
+    color:bisque !important;
 }

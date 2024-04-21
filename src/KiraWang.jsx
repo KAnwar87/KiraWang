@@ -1,13 +1,14 @@
 import './GayaKiraWang.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function KiraWang() {
 
+    // RM100
     const [rm100qty, setRM100qty] = useState(0);
     const [subRM100, setSubRM100] = useState(0);
     const handleRM100qtyChange = (e) => {
         setRM100qty(e.target.value);
-        setSubRM100(e.target.value * 100)
+        setSubRM100(e.target.value * 100);
     };
     const handleRM100minusButton = () => {
         if (rm100qty > 0) {
@@ -20,34 +21,434 @@ function KiraWang() {
         setSubRM100(prevQty => parseInt(prevQty) + 100)
     };
 
+        // RM50
+        const [rm50qty, setRM50qty] = useState(0);
+        const [subRM50, setSubRM50] = useState(0);
+        const handleRM50qtyChange = (e) => {
+            setRM50qty(e.target.value);
+            setSubRM50(e.target.value * 50)
+        };
+        const handleRM50minusButton = () => {
+            if (rm50qty > 0) {
+                setRM50qty(prevQty => parseInt(prevQty) - 1);
+                setSubRM50(prevQty => parseInt(prevQty) - 50)
+            }
+        };
+        const handleRM50plusButton = () => {
+            setRM50qty(prevQty => parseInt(prevQty) + 1);
+            setSubRM50(prevQty => parseInt(prevQty) + 50)
+        };
+
+            // RM20
+            const [rm20qty, setRM20qty] = useState(0);
+            const [subRM20, setSubRM20] = useState(0);
+            const handleRM20qtyChange = (e) => {
+                setRM20qty(e.target.value);
+                setSubRM20(e.target.value * 20)
+            };
+            const handleRM20minusButton = () => {
+                if (rm20qty > 0) {
+                    setRM20qty(prevQty => parseInt(prevQty) - 1);
+                    setSubRM20(prevQty => parseInt(prevQty) - 20)
+                }
+            };
+            const handleRM20plusButton = () => {
+                setRM20qty(prevQty => parseInt(prevQty) + 1);
+                setSubRM20(prevQty => parseInt(prevQty) + 20)
+                };
+        
+    // RM10
+    const [rm10qty, setRM10qty] = useState(0);
+    const [subRM10, setSubRM10] = useState(0);
+    const handleRM10qtyChange = (e) => {
+        setRM10qty(e.target.value);
+        setSubRM10(e.target.value * 10)
+    };
+    const handleRM10minusButton = () => {
+        if (rm10qty > 0) {
+            setRM10qty(prevQty => parseInt(prevQty) - 1);
+            setSubRM10(prevQty => parseInt(prevQty) - 10)
+        }
+    };
+    const handleRM10plusButton = () => {
+        setRM10qty(prevQty => parseInt(prevQty) + 1);
+        setSubRM10(prevQty => parseInt(prevQty) + 10)
+    };
+
+        // RM5
+        const [rm5qty, setRM5qty] = useState(0);
+        const [subRM5, setSubRM5] = useState(0);
+        const handleRM5qtyChange = (e) => {
+            setRM5qty(e.target.value);
+            setSubRM5(e.target.value * 5)
+        };
+        const handleRM5minusButton = () => {
+            if (rm5qty > 0) {
+                setRM5qty(prevQty => parseInt(prevQty) - 1);
+                setSubRM5(prevQty => parseInt(prevQty) - 5)
+            }
+        };
+        const handleRM5plusButton = () => {
+            setRM5qty(prevQty => parseInt(prevQty) + 1);
+            setSubRM5(prevQty => parseInt(prevQty) + 5)
+        };
+
+            // RM1
+            const [rm1qty, setRM1qty] = useState(0);
+            const [subRM1, setSubRM1] = useState(0);
+            const handleRM1qtyChange = (e) => {
+                setRM1qty(e.target.value);
+                setSubRM1(e.target.value * 1)
+            };
+            const handleRM1minusButton = () => {
+                if (rm1qty > 0) {
+                    setRM1qty(prevQty => parseInt(prevQty) - 1);
+                    setSubRM1(prevQty => parseInt(prevQty) - 1)
+                }
+            };
+            const handleRM1plusButton = () => {
+                setRM1qty(prevQty => parseInt(prevQty) + 1);
+                setSubRM1(prevQty => parseInt(prevQty) + 1)
+                };
+
+    // 50sen
+    const [sen50qty, setSen50qty] = useState(0);
+    const [subSen50, setSubSen50] = useState(0);
+    const handleSen50qtyChange = (e) => {
+        setSen50qty(e.target.value);
+        setSubSen50(e.target.value * 0.50)
+    };
+    const handleSen50minusButton = () => {
+        if (sen50qty > 0.00) {
+            setSen50qty(prevQty => parseFloat(prevQty) - 1);
+            setSubSen50(prevQty => parseFloat(prevQty) - 0.50)
+        }
+    };
+    const handleSen50plusButton = () => {
+        setSen50qty(prevQty => parseFloat(prevQty) + 1);
+        setSubSen50(prevQty => parseFloat(prevQty) + 0.50)
+    };
+
+        // 20sen
+        const [sen20qty, setSen20qty] = useState(0);
+        const [subSen20, setSubSen20] = useState(0);
+        const handleSen20qtyChange = (e) => {
+            setSen20qty(e.target.value);
+            setSubSen20(e.target.value * 0.20)
+        };
+        const handleSen20minusButton = () => {
+            if (sen20qty > 0) {
+                setSen20qty(prevQty => parseFloat(prevQty) - 1);
+                setSubSen20(prevQty => parseFloat(prevQty) - 0.20)
+            }
+        };
+        const handleSen20plusButton = () => {
+            setSen20qty(prevQty => parseFloat(prevQty) + 1);
+            setSubSen20(prevQty => parseFloat(prevQty) + 0.20)
+        };
+
+    // 10sen
+    const [sen10qty, setSen10qty] = useState(0);
+    const [subSen10, setSubSen10] = useState(0);
+    const handleSen10qtyChange = (e) => {
+        setSen10qty(e.target.value);
+        setSubSen10(e.target.value * 0.10)
+    };
+    const handleSen10minusButton = () => {
+        if (sen10qty > 0.00) {
+            setSen10qty(prevQty => parseFloat(prevQty) - 1);
+            setSubSen10(prevQty => parseFloat(prevQty) - 0.10)
+        }
+    };
+    const handleSen10plusButton = () => {
+        setSen10qty(prevQty => parseFloat(prevQty) + 1);
+        setSubSen10(prevQty => parseFloat(prevQty) + 0.10)
+    };
+
+        // 5sen
+        const [sen5qty, setSen5qty] = useState(0);
+        const [subSen5, setSubSen5] = useState(0);
+        const handleSen5qtyChange = (e) => {
+            setSen5qty(e.target.value);
+            setSubSen5(e.target.value * 0.05)
+        };
+        const handleSen5minusButton = () => {
+            if (sen5qty > 0) {
+                setSen5qty(prevQty => parseFloat(prevQty) - 1);
+                setSubSen5(prevQty => parseFloat(prevQty) - 0.05)
+            }
+        };
+        const handleSen5plusButton = () => {
+            setSen5qty(prevQty => parseFloat(prevQty) + 1);
+            setSubSen5(prevQty => parseFloat(prevQty) + 0.05)
+        };
+
+    const [total, setTotal] = useState(0);
+    useEffect(() => {
+        setTotal(subRM100 + subRM50 + subRM20 + subRM10 + subRM5 + subRM1 + + subSen50 + subSen20 + subSen10 + subSen5);
+    }, [subRM100, subRM50, subRM20, subRM10, subRM5, subRM1, subSen50, subSen20, subSen10, subSen5]);
+
+        const handleReset = () => {
+            setRM100qty(0);
+                setSubRM100(0);
+            setRM50qty(0);
+                setSubRM50(0);
+            setRM20qty(0);
+                setSubRM20(0);
+            setRM10qty(0);
+                setSubRM10(0);
+            setRM5qty(0);
+                setSubRM5(0);
+            setRM1qty(0);
+                setSubRM1(0);
+            setSen50qty(0);
+                setSubSen50(0);
+            setSen20qty(0);
+                setSubSen20(0);
+            setSen10qty(0);
+                setSubSen10(0);
+            setSen5qty(0);
+                setSubSen5(0);
+
+            setTotal(0);
+        };
+
+    const [showDuitSyiling, setShowDuitSyiling] = useState(false);
+
+    const [showRekodModal, setShowRekodModal] = useState(false);
+
+        const handleCloseRekodModal = () => {
+            setShowRekodModal(false);
+        };
+
+        const handleShowRekodModal = () => {
+            setShowRekodModal(true);
+        };
+
 
     return (
         <>
             <div className='title'>
-                <h2>Kalkuleter</h2>
-            </div>
-            <div className='container'>
-                <div className='row satuRatus align-items-center'>
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM100minusButton}>-</button></div>
-                    <div className='col duit'><span>RM 100</span></div>
-                    <div className='col darabInput'><span>X </span><input type='number' className="ringgitSen text-center" id="rm100qty" min="0" value={rm100qty} onChange={handleRM100qtyChange} text-align="center"></input></div>
-                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM100plusButton}>+</button></div>
-                    <div className='col subAmount'><strong><span>RM </span>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM100)}</strong></div>
+                <div><h2>Kira Wang</h2></div>
+                <div className='switchButton'>
+                    <i className="fa-solid fa-money-bill-1-wave"></i> &nbsp; 
+                    <div className="form-check form-switch">
+                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={() => { setShowDuitSyiling(!showDuitSyiling); handleReset(); }} />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault"></label> &nbsp;  
+                        <i className="fa-solid fa-circle-dollar-to-slot"></i>
+                    </div>
                 </div>
-                <div className='row satuRatus align-items-center'>
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM100minusButton}>-</button></div>
-                    <div className='col duit'><span>RM 100</span></div>
-                    <div className='col darabInput'>
-                        <div className="input-group mb-3 flex-nowrap">
-                            <span className="input-group-text flex-nowrap" id="darab100">X</span>
-                            <input type="number" className="ringgitSen form-control flex-nowrap" id="rm100qty" min="0" value={rm100qty} onChange={handleRM100qtyChange} text-align="center"></input>
+            </div>
+
+            <div className='row satuRatusRinggit'>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM100minusButton}>-</button></div>
+                <div className='col duit'>
+                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM100.png" alt="RM50"></img> &nbsp; </div>
+                    <div className='denomination'><span>RM 100</span></div>
+                </div>
+                <div className='col darabInput d-flex align-items-center'>
+                    <div className="input-group d-flex align-items-center">
+                        <span className="input-group-text" id="darab100">X</span>
+                        <input type="number" className="ringgitSen form-control text-center" id="rm100qty" min="0" value={rm100qty} onChange={handleRM100qtyChange} text-align="center"></input>
+                    </div>
+                </div>
+                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM100plusButton}>+</button></div>
+                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM100)}</strong></div>
+            </div>
+
+            <div className='row limaPuluhRinggit'>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM50minusButton}>-</button></div>
+                <div className='col duit'>
+                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM50.png" alt="RM50"></img> &nbsp; </div>
+                    <div className='denomination'><span>RM 50</span></div>
+                </div>
+                <div className='col darabInput d-flex align-items-center'>
+                    <div className="input-group d-flex align-items-center">
+                        <span className="input-group-text" id="darab50">X</span>
+                        <input type="number" className="ringgitSen form-control text-center" id="rm50qty" min="0" value={rm50qty} onChange={handleRM50qtyChange} text-align="center"></input>
+                    </div>
+                </div>
+                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM50plusButton}>+</button></div>
+                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM50)}</strong></div>
+            </div>
+
+            <div className='row duaPuluhRinggit'>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM20minusButton}>-</button></div>
+                <div className='col duit'>
+                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM20.png" alt="RM20"></img> &nbsp; </div>
+                    <div className='denomination'><span>RM 20</span></div>
+                </div>                    
+                <div className='col darabInput d-flex align-items-center'>
+                    <div className="input-group d-flex align-items-center">
+                        <span className="input-group-text" id="darab20">X</span>
+                        <input type="number" className="ringgitSen form-control text-center" id="rm20qty" min="0" value={rm20qty} onChange={handleRM20qtyChange} text-align="center"></input>
+                    </div>
+                </div>
+                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM20plusButton}>+</button></div>
+                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM20)}</strong></div>
+            </div>
+
+            <div className='row sePuluhRinggit'>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM10minusButton}>-</button></div>
+                <div className='col duit'>
+                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM10.png" alt="RM10"></img> &nbsp; </div>
+                    <div className='denomination'><span>RM 10</span></div>
+                </div>                    
+                <div className='col darabInput d-flex align-items-center'>
+                    <div className="input-group d-flex align-items-center">
+                        <span className="input-group-text" id="darab10">X</span>
+                        <input type="number" className="ringgitSen form-control text-center" id="rm10qty" min="0" value={rm10qty} onChange={handleRM10qtyChange} text-align="center"></input>
+                    </div>
+                </div>
+                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM10plusButton}>+</button></div>
+                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM10)}</strong></div>
+            </div>
+
+            <div className='row limaRinggit'>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM5minusButton}>-</button></div>
+                <div className='col duit'>
+                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM5.png" alt="RM5"></img> &nbsp; </div>
+                    <div className='denomination'><span>RM 5</span></div>
+                </div>                    
+                <div className='col darabInput d-flex align-items-center'>
+                    <div className="input-group d-flex align-items-center">
+                        <span className="input-group-text" id="darab5">X</span>
+                        <input type="number" className="ringgitSen form-control text-center" id="rm5qty" min="0" value={rm5qty} onChange={handleRM5qtyChange} text-align="center"></input>
+                    </div>
+                </div>
+                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM5plusButton}>+</button></div>
+                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM5)}</strong></div>
+            </div>
+
+            <div className='row satuRinggit'>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM1minusButton}>-</button></div>
+                <div className='col duit'>
+                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM1"></img> &nbsp; </div>
+                    <div className='denomination'><span>RM 1</span></div>
+                </div>                    
+                <div className='col darabInput d-flex align-items-center'>
+                    <div className="input-group d-flex align-items-center">
+                        <span className="input-group-text" id="darab1">X</span>
+                        <input type="number" className="ringgitSen form-control text-center" id="rm1qty" min="0" value={rm1qty} onChange={handleRM1qtyChange} text-align="center"></input>
+                    </div>
+                </div>
+                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM1plusButton}>+</button></div>
+                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM1)}</strong></div>
+            </div>
+
+            {showDuitSyiling && (
+                <div className='row limaPuluhSen'>
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen50minusButton}>-</button></div>
+                    <div className='col duit'>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.50"></img> &nbsp; </div>
+                        <div className='denomination'><span>50 sen</span></div>
+                    </div> 
+                    <div className='col darabInput d-flex align-items-center'>
+                        <div className="input-group d-flex align-items-center">
+                            <span className="input-group-text" id="darabSen50">X</span>
+                            <input type="number" className="ringgitSen form-control text-center" id="sen50qty" min="0" value={sen50qty} onChange={handleSen50qtyChange} text-align="center"></input>
                         </div>
                     </div>
-                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM100plusButton}>+</button></div>
-                    <div className='col subAmount'><strong><span>RM </span>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM100)}</strong></div>
+                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen50plusButton}>+</button></div>
+                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen50)}</strong></div>
+                </div>
+            )}
+
+            {showDuitSyiling && (
+                <div className='row duaPuluhSen'>
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen20minusButton}>-</button></div>
+                    <div className='col duit'>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.20"></img> &nbsp; </div>
+                        <div className='denomination'><span>20 sen</span></div>
+                    </div> 
+                    <div className='col darabInput d-flex align-items-center'>
+                        <div className="input-group d-flex align-items-center">
+                            <span className="input-group-text" id="darabSen20">X</span>
+                            <input type="number" className="ringgitSen form-control text-center" id="sen20qty" min="0" value={sen20qty} onChange={handleSen20qtyChange} text-align="center"></input>
+                        </div>
+                    </div>
+                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen20plusButton}>+</button></div>
+                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen20)}</strong></div>
+                </div>
+            )}
+
+            {showDuitSyiling && (
+                <div className='row sePuluhSen'>
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen10minusButton}>-</button></div>
+                    <div className='col duit'>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.10"></img> &nbsp; </div>
+                        <div className='denomination'><span>10 sen</span></div>
+                    </div> 
+                    <div className='col darabInput d-flex align-items-center'>
+                        <div className="input-group d-flex align-items-center">
+                            <span className="input-group-text" id="darabSen10">X</span>
+                            <input type="number" className="ringgitSen form-control text-center" id="sen10qty" min="0" value={sen10qty} onChange={handleSen10qtyChange} text-align="center"></input>
+                        </div>
+                    </div>
+                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen10plusButton}>+</button></div>
+                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen10)}</strong></div>
+                </div>
+            )}
+
+
+            {showDuitSyiling && (
+                <div className='row limaSen'>
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen5minusButton}>-</button></div>
+                    <div className='col duit'>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.05"></img> &nbsp; </div>
+                        <div className='denomination'><span>5 sen</span></div>
+                    </div> 
+                    <div className='col darabInput d-flex align-items-center'>
+                        <div className="input-group d-flex align-items-center">
+                            <span className="input-group-text" id="darabSen5">X</span>
+                            <input type="number" className="ringgitSen form-control text-center" id="sen5qty" min="0" value={sen5qty} onChange={handleSen5qtyChange} text-align="center"></input>
+                        </div>
+                    </div>
+                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen5plusButton}>+</button></div>
+                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen5)}</strong></div>
+                </div>
+            )}
+
+
+            <div className='total'>
+                <span>Jumlah: <br />
+                    <h4>
+                        <strong>RM {new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(total)}
+                        </strong>
+                    </h4>
+                </span>
+            </div>
+
+            <div className='saveAndReset'>
+                <div className='reset'>
+                    <button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleReset}>Reset</button> &nbsp;
+                    <button type="button" className="btn btn-primary btn-sm" onClick={handleShowRekodModal}>Save</button>
                 </div>
             </div>
-            
+
+
+            {showRekodModal && (
+                <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Simpan Rekod</h5>
+                            </div>
+                            <div className="modal-body">
+                            <form className="form-floating">
+                                <input type="text" className="form-control" id="floatingInputValue" placeholder="Remark" />
+                                <label for="floatingInputValue">Remark</label>
+                            </form>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={handleCloseRekodModal}>Cancel</button>
+                                <button type="button" className="btn btn-success">Save Record</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </>
     )
 }

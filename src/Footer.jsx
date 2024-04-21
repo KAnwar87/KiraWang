@@ -18,10 +18,11 @@ const Footer = () => {
     
 
     return <footer>
-        <span>{`© ${year}`} Khairul Anwar | KA Wealth Management </span> &nbsp;
+        <span>{`© ${year}`} Khairul Anwar</span> &nbsp;
         <button type="button" className="btn btn-dark" onClick={handleShowModal}>
             <i className="fa-solid fa-info fa-2xs"></i>
-        </button>
+        </button>  &nbsp;
+        <span className='credit'><a href="https://lovepik.com/images/png-malaysia.html" target='_blank'><em>Illustration by HappySnow on LovePik</em></a></span>
 
 
         {/* Modal */}
