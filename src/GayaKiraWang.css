@@ -99,6 +99,18 @@
     max-width: 150px;
 }
 
+.bebutang button {
+    margin-right: 10px; 
+}
+
+.containerLS {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.dataLS {
+    border: 1px grey dashed;
+}
 
 
 footer {

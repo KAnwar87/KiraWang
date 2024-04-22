@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 
 function KiraWang() {
 
+/* #region Ringgit & Sen */
+
     // RM100
     const [rm100qty, setRM100qty] = useState(0);
     const [subRM100, setSubRM100] = useState(0);
@@ -188,46 +190,154 @@ function KiraWang() {
         setTotal(subRM100 + subRM50 + subRM20 + subRM10 + subRM5 + subRM1 + + subSen50 + subSen20 + subSen10 + subSen5);
     }, [subRM100, subRM50, subRM20, subRM10, subRM5, subRM1, subSen50, subSen20, subSen10, subSen5]);
 
-        const handleReset = () => {
-            setRM100qty(0);
-                setSubRM100(0);
-            setRM50qty(0);
-                setSubRM50(0);
-            setRM20qty(0);
-                setSubRM20(0);
-            setRM10qty(0);
-                setSubRM10(0);
-            setRM5qty(0);
-                setSubRM5(0);
-            setRM1qty(0);
-                setSubRM1(0);
-            setSen50qty(0);
-                setSubSen50(0);
-            setSen20qty(0);
-                setSubSen20(0);
-            setSen10qty(0);
-                setSubSen10(0);
-            setSen5qty(0);
-                setSubSen5(0);
 
-            setTotal(0);
-        };
+/* #endregion */
+/* #region RM vs RM&Sen & Reset */
 
     const [showDuitSyiling, setShowDuitSyiling] = useState(false);
 
-    const [showRekodModal, setShowRekodModal] = useState(false);
+    const handleReset = () => {
+        setRM100qty(0);
+            setSubRM100(0);
+        setRM50qty(0);
+            setSubRM50(0);
+        setRM20qty(0);
+            setSubRM20(0);
+        setRM10qty(0);
+            setSubRM10(0);
+        setRM5qty(0);
+            setSubRM5(0);
+        setRM1qty(0);
+            setSubRM1(0);
+        setSen50qty(0);
+            setSubSen50(0);
+        setSen20qty(0);
+            setSubSen20(0);
+        setSen10qty(0);
+            setSubSen10(0);
+        setSen5qty(0);
+            setSubSen5(0);
 
-        const handleCloseRekodModal = () => {
-            setShowRekodModal(false);
-        };
+        setTotal(0);
+    };
 
-        const handleShowRekodModal = () => {
-            setShowRekodModal(true);
+
+/* #endregion */
+/* #region Modal : Save, Remark & Save Button */
+
+    // Modal : Save
+        const [showModalSave, setShowModalSave] = useState(false);
+
+            const handleCloseModalSave = () => {
+                setShowModalSave(false);
+            };
+
+            const handleShowModalSave = () => {
+                setShowModalSave(true);
+            };
+
+        // Modal : Save - Remark
+        const [saveRemark, setSaveRemark] = useState('');
+            const handleSaveRemarkChange = (e) => {
+                setSaveRemark(e.target.value);
+            };
+        
+            // Modal : Save - Records
+
+            const handleSaveRecord = () => {
+                const date = new Date().toLocaleDateString('en-GB');
+            
+                const items = [
+                    { currency: 'RM100', qty: rm100qty, subtotal: subRM100 },
+                    { currency: 'RM50', qty: rm50qty, subtotal: subRM50 },
+                    { currency: 'RM20', qty: rm20qty, subtotal: subRM20 },
+                    { currency: 'RM10', qty: rm10qty, subtotal: subRM10 },
+                    { currency: 'RM5', qty: rm5qty, subtotal: subRM5 },
+                    { currency: 'RM1', qty: rm1qty, subtotal: subRM1 },
+                    { currency: '50sen', qty: sen50qty, subtotal: subSen50 },
+                    { currency: '20sen', qty: sen20qty, subtotal: subSen20 },
+                    { currency: '10sen', qty: sen10qty, subtotal: subSen10 },
+                    { currency: '5sen', qty: sen5qty, subtotal: subSen5 },
+                ];
+            
+                const filteredItems = items.filter(item => item.qty !== 0);
+            
+                const newRecord = {
+                    date: date,
+                    remark: saveRemark,
+                    total: total,
+                    filteredItems: filteredItems
+                };
+
+                // Get existing records from localStorage
+                const existingRecords = JSON.parse(localStorage.getItem('kiraWang')) || [];
+            
+                // Decide whether to replace or add to existing records based on requirements
+                // If you want to replace existing records with the filtered ones:
+                // const updatedRecords = filteredRekod;
+            
+                // If you want to add the new filtered records to existing records:
+                const updatedRecords = [...existingRecords, newRecord];
+            
+                // Save the updated records to localStorage
+                localStorage.setItem('kiraWang', JSON.stringify(updatedRecords));
+            };
+
+/* #endregion */
+/* #region Modal : View Data */
+
+    // Modal : View Data
+    const [showModalViewData, setShowModalViewData] = useState(false);
+    const [lsData, setLSData] = useState([]);
+
+    const handleCloseModalViewData = () => {
+        setShowModalViewData(false);
+    };
+
+    const getDataFromLocalStorage = () => {
+        const existingRecords = JSON.parse(localStorage.getItem('kiraWang')) || [];
+        setLSData(existingRecords);
+    };
+
+    const handleShowModalViewData = () => {
+        getDataFromLocalStorage();
+        setShowModalViewData(true);
+    };
+
+    useEffect(() => {
+        // Call the function to get records from localStorage
+        getDataFromLocalStorage();
+    }, []); // Empty dependency array to run the effect only once on component mount
+
+        const handleDeleteRecord = (recordId) => {
+            // Filter out the record with the given ID
+            const existingRecords = JSON.parse(localStorage.getItem('kiraWang')) || [];
+            const updatedRecords = existingRecords.filter(record => record.id !== recordId);
+        
+            // Update the state with the filtered records
+            setLSData(updatedRecords);
+        
+            // Update localStorage with the filtered records
+            localStorage.setItem('kiraWang', JSON.stringify(updatedRecords));
         };
+/* #endregion */
+
+
+
+
+        
+
+        
+
+    
+
+
+
 
 
     return (
         <>
+        
             <div className='title'>
                 <div><h2>Kira Wang</h2></div>
                 <div className='switchButton'>
@@ -340,7 +450,7 @@ function KiraWang() {
                 <div className='row limaPuluhSen'>
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen50minusButton}>-</button></div>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.50"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling50sen.png" alt="RM0.50"></img> &nbsp; </div>
                         <div className='denomination'><span>50 sen</span></div>
                     </div> 
                     <div className='col darabInput d-flex align-items-center'>
@@ -358,7 +468,7 @@ function KiraWang() {
                 <div className='row duaPuluhSen'>
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen20minusButton}>-</button></div>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.20"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling20sen.png" alt="RM0.20"></img> &nbsp; </div>
                         <div className='denomination'><span>20 sen</span></div>
                     </div> 
                     <div className='col darabInput d-flex align-items-center'>
@@ -376,7 +486,7 @@ function KiraWang() {
                 <div className='row sePuluhSen'>
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen10minusButton}>-</button></div>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.10"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling10sen.png" alt="RM0.10"></img> &nbsp; </div>
                         <div className='denomination'><span>10 sen</span></div>
                     </div> 
                     <div className='col darabInput d-flex align-items-center'>
@@ -395,7 +505,7 @@ function KiraWang() {
                 <div className='row limaSen'>
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen5minusButton}>-</button></div>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM0.05"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling5sen.png" alt="RM0.05"></img> &nbsp; </div>
                         <div className='denomination'><span>5 sen</span></div>
                     </div> 
                     <div className='col darabInput d-flex align-items-center'>
@@ -419,15 +529,13 @@ function KiraWang() {
                 </span>
             </div>
 
-            <div className='saveAndReset'>
-                <div className='reset'>
-                    <button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleReset}>Reset</button> &nbsp;
-                    <button type="button" className="btn btn-primary btn-sm" onClick={handleShowRekodModal}>Save</button>
-                </div>
+            <div className='bebutang'>
+                <button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleReset}>Reset</button>
+                <button type="button" className="btn btn-info btn-sm" onClick={handleShowModalViewData}>View Records</button> 
+                <button type="button" className="btn btn-primary btn-sm" onClick={handleShowModalSave}>Save</button>  
             </div>
 
-
-            {showRekodModal && (
+            {showModalSave && (
                 <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
@@ -436,17 +544,57 @@ function KiraWang() {
                             </div>
                             <div className="modal-body">
                             <form className="form-floating">
-                                <input type="text" className="form-control" id="floatingInputValue" placeholder="Remark" />
-                                <label for="floatingInputValue">Remark</label>
+                                <input type="text" className="form-control" id="floatingInputValue" placeholder="Remark" value={saveRemark} onChange={handleSaveRemarkChange} />
+                                <label htmlFor="floatingInputValue">Remark</label>
                             </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={handleCloseRekodModal}>Cancel</button>
-                                <button type="button" className="btn btn-success">Save Record</button>
+                                <button type="button" className="btn btn-secondary" onClick={handleCloseModalSave}>Cancel</button>
+                                <button type="button" className="btn btn-success" onClick={() => { handleSaveRecord(); handleCloseModalSave(); }}>Save Record</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            )}
+
+            {showModalViewData && (
+                <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">View Records</h5>
+                        </div>
+                        <div className="modal-body">
+                            <div>
+                                {lsData.length === 0 ? (
+                                    <p>No records.</p>
+                                ) : (
+                                    lsData.map((record, index) => (
+                                        <div key={index}>
+                                            <span>{record.date}</span> <br />
+                                            <span>{record.remark}</span> <br />
+                                            <span><strong>Total: {record.total}</strong></span> <br /> <br />
+                                            <u>Details:</u> <br />
+                                            <span>
+                                                {record.filteredItems.map((item, itemIndex) => (
+                                                    <span key={itemIndex}>{item.currency} X {item.qty} : {item.subtotal}<br /></span>
+                                                ))}
+                                            </span>
+                                            <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDeleteRecord(record.id)}>Delete Record</button>
+                                            <hr />
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModalViewData}>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
             )}
 
         </>
