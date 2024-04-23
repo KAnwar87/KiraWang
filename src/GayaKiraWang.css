@@ -112,6 +112,24 @@
     border: 1px grey dashed;
 }
 
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Gap between cards */
+}
+.card {
+    width: 100%; /* Ensure each card takes full width of its column */
+}
+
+.titleAndClear, .dateAndDelete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.tacClear, .dndDelete {
+    margin-left: auto;
+}
 
 footer {
     position: fixed;

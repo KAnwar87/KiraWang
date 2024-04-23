@@ -1,6 +1,18 @@
 import './GayaKiraWang.css'
 import { useState, useEffect } from 'react';
 
+/* #region Prevent Right Click */
+
+document.addEventListener('contextmenu', event => {
+    event.preventDefault();
+});
+
+document.querySelectorAll('.disabled').forEach(element => {
+    element.style.pointerEvents = 'none';
+});
+
+/* #endregion */
+
 function KiraWang() {
 
 /* #region Ringgit & Sen */
@@ -186,11 +198,14 @@ function KiraWang() {
         };
 
     const [total, setTotal] = useState(0);
-    useEffect(() => {
-        setTotal(subRM100 + subRM50 + subRM20 + subRM10 + subRM5 + subRM1 + + subSen50 + subSen20 + subSen10 + subSen5);
-    }, [subRM100, subRM50, subRM20, subRM10, subRM5, subRM1, subSen50, subSen20, subSen10, subSen5]);
+
+useEffect(() => {
+    const calculatedTotal = subRM100 + subRM50 + subRM20 + subRM10 + subRM5 + subRM1 + subSen50 + subSen20 + subSen10 + subSen5;
+    setTotal(calculatedTotal.toFixed(2));
+}, [subRM100, subRM50, subRM20, subRM10, subRM5, subRM1, subSen50, subSen20, subSen10, subSen5]);
 
 
+    
 /* #endregion */
 /* #region RM vs RM&Sen & Reset */
 
@@ -245,6 +260,7 @@ function KiraWang() {
             // Modal : Save - Records
 
             const handleSaveRecord = () => {
+                const id = new Date(); 
                 const date = new Date().toLocaleDateString('en-GB');
             
                 const items = [
@@ -263,6 +279,7 @@ function KiraWang() {
                 const filteredItems = items.filter(item => item.qty !== 0);
             
                 const newRecord = {
+                    id: id,
                     date: date,
                     remark: saveRemark,
                     total: total,
@@ -320,25 +337,18 @@ function KiraWang() {
             // Update localStorage with the filtered records
             localStorage.setItem('kiraWang', JSON.stringify(updatedRecords));
         };
+
+        const handleClearAllRecord = () => {
+            localStorage.removeItem("kiraWang");
+        }
 /* #endregion */
-
-
-
-
-        
-
-        
-
-    
-
-
 
 
 
     return (
         <>
         
-            <div className='title'>
+            <div className='titleAndSwitchButton'>
                 <div><h2>Kira Wang</h2></div>
                 <div className='switchButton'>
                     <i className="fa-solid fa-money-bill-1-wave"></i> &nbsp; 
@@ -351,11 +361,11 @@ function KiraWang() {
             </div>
 
             <div className='row satuRatusRinggit'>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM100minusButton}>-</button></div>
                 <div className='col duit'>
                     <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM100.png" alt="RM50"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 100</span></div>
                 </div>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM100minusButton}>-</button></div>
                 <div className='col darabInput d-flex align-items-center'>
                     <div className="input-group d-flex align-items-center">
                         <span className="input-group-text" id="darab100">X</span>
@@ -367,11 +377,11 @@ function KiraWang() {
             </div>
 
             <div className='row limaPuluhRinggit'>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM50minusButton}>-</button></div>
                 <div className='col duit'>
                     <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM50.png" alt="RM50"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 50</span></div>
                 </div>
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM50minusButton}>-</button></div>
                 <div className='col darabInput d-flex align-items-center'>
                     <div className="input-group d-flex align-items-center">
                         <span className="input-group-text" id="darab50">X</span>
@@ -383,11 +393,11 @@ function KiraWang() {
             </div>
 
             <div className='row duaPuluhRinggit'>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM20minusButton}>-</button></div>
                 <div className='col duit'>
                     <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM20.png" alt="RM20"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 20</span></div>
                 </div>                    
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM20minusButton}>-</button></div>
                 <div className='col darabInput d-flex align-items-center'>
                     <div className="input-group d-flex align-items-center">
                         <span className="input-group-text" id="darab20">X</span>
@@ -399,11 +409,11 @@ function KiraWang() {
             </div>
 
             <div className='row sePuluhRinggit'>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM10minusButton}>-</button></div>
                 <div className='col duit'>
                     <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM10.png" alt="RM10"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 10</span></div>
                 </div>                    
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM10minusButton}>-</button></div>
                 <div className='col darabInput d-flex align-items-center'>
                     <div className="input-group d-flex align-items-center">
                         <span className="input-group-text" id="darab10">X</span>
@@ -415,11 +425,11 @@ function KiraWang() {
             </div>
 
             <div className='row limaRinggit'>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM5minusButton}>-</button></div>
                 <div className='col duit'>
                     <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM5.png" alt="RM5"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 5</span></div>
                 </div>                    
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM5minusButton}>-</button></div>
                 <div className='col darabInput d-flex align-items-center'>
                     <div className="input-group d-flex align-items-center">
                         <span className="input-group-text" id="darab5">X</span>
@@ -431,11 +441,11 @@ function KiraWang() {
             </div>
 
             <div className='row satuRinggit'>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM1minusButton}>-</button></div>
                 <div className='col duit'>
                     <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM1"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 1</span></div>
                 </div>                    
+                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM1minusButton}>-</button></div>
                 <div className='col darabInput d-flex align-items-center'>
                     <div className="input-group d-flex align-items-center">
                         <span className="input-group-text" id="darab1">X</span>
@@ -448,11 +458,11 @@ function KiraWang() {
 
             {showDuitSyiling && (
                 <div className='row limaPuluhSen'>
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen50minusButton}>-</button></div>
                     <div className='col duit'>
                         <div className="banknote"><img className="gambarDuit" src="./DuitSyiling50sen.png" alt="RM0.50"></img> &nbsp; </div>
                         <div className='denomination'><span>50 sen</span></div>
                     </div> 
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen50minusButton}>-</button></div>
                     <div className='col darabInput d-flex align-items-center'>
                         <div className="input-group d-flex align-items-center">
                             <span className="input-group-text" id="darabSen50">X</span>
@@ -466,11 +476,11 @@ function KiraWang() {
 
             {showDuitSyiling && (
                 <div className='row duaPuluhSen'>
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen20minusButton}>-</button></div>
                     <div className='col duit'>
                         <div className="banknote"><img className="gambarDuit" src="./DuitSyiling20sen.png" alt="RM0.20"></img> &nbsp; </div>
                         <div className='denomination'><span>20 sen</span></div>
                     </div> 
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen20minusButton}>-</button></div>
                     <div className='col darabInput d-flex align-items-center'>
                         <div className="input-group d-flex align-items-center">
                             <span className="input-group-text" id="darabSen20">X</span>
@@ -484,11 +494,11 @@ function KiraWang() {
 
             {showDuitSyiling && (
                 <div className='row sePuluhSen'>
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen10minusButton}>-</button></div>
                     <div className='col duit'>
                         <div className="banknote"><img className="gambarDuit" src="./DuitSyiling10sen.png" alt="RM0.10"></img> &nbsp; </div>
                         <div className='denomination'><span>10 sen</span></div>
                     </div> 
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen10minusButton}>-</button></div>
                     <div className='col darabInput d-flex align-items-center'>
                         <div className="input-group d-flex align-items-center">
                             <span className="input-group-text" id="darabSen10">X</span>
@@ -503,11 +513,11 @@ function KiraWang() {
 
             {showDuitSyiling && (
                 <div className='row limaSen'>
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen5minusButton}>-</button></div>
                     <div className='col duit'>
                         <div className="banknote"><img className="gambarDuit" src="./DuitSyiling5sen.png" alt="RM0.05"></img> &nbsp; </div>
                         <div className='denomination'><span>5 sen</span></div>
                     </div> 
+                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen5minusButton}>-</button></div>
                     <div className='col darabInput d-flex align-items-center'>
                         <div className="input-group d-flex align-items-center">
                             <span className="input-group-text" id="darabSen5">X</span>
@@ -550,7 +560,7 @@ function KiraWang() {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" onClick={handleCloseModalSave}>Cancel</button>
-                                <button type="button" className="btn btn-success" onClick={() => { handleSaveRecord(); handleCloseModalSave(); }}>Save Record</button>
+                                <button type="button" className="btn btn-success" onClick={() => { handleSaveRecord(); handleCloseModalSave(); handleShowModalViewData() }}>Save Record</button>
                             </div>
                         </div>
                     </div>
@@ -559,40 +569,61 @@ function KiraWang() {
 
             {showModalViewData && (
                 <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">View Records</h5>
-                        </div>
-                        <div className="modal-body">
-                            <div>
-                                {lsData.length === 0 ? (
-                                    <p>No records.</p>
-                                ) : (
-                                    lsData.map((record, index) => (
-                                        <div key={index}>
-                                            <span>{record.date}</span> <br />
-                                            <span>{record.remark}</span> <br />
-                                            <span><strong>Total: {record.total}</strong></span> <br /> <br />
-                                            <u>Details:</u> <br />
-                                            <span>
-                                                {record.filteredItems.map((item, itemIndex) => (
-                                                    <span key={itemIndex}>{item.currency} X {item.qty} : {item.subtotal}<br /></span>
-                                                ))}
-                                            </span>
-                                            <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDeleteRecord(record.id)}>Delete Record</button>
-                                            <hr />
-                                        </div>
-                                    ))
-                                )}
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <div className="titleAndClear">
+                                    <div className="tacTitle"><h5 className="modal-title">View Records</h5></div>
+                                    <div className="tacClear">
+                                        <button type="button" className="btn btn-outline-danger btn-sm" onClick={() => { handleClearAllRecord(); handleShowModalViewData() }}><i class="fa-solid fa-delete-left"></i> Delete All</button>
+                                    </div>
+                                </div>
+                                
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" onClick={handleCloseModalViewData}>Close</button>
+                            <div className="modal-body">
+                                <div className="card-container">
+                                    {lsData.length === 0 ? (
+                                        <p>No records.</p>
+                                    ) : (
+                                        lsData.map((record, index) => (
+                                            
+                                        <div className="card" key={index} style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
+                                            <div className="card-body">
+                                                <div className="dateAndDelete">
+                                                    <div className="dndDate"><span>{record.date}</span></div>
+                                                    <div className="dndDelete">
+                                                        <button type="button" className="btn btn-outline-danger btn-sm" onClick={() => handleDeleteRecord(record.id)}><i className="deleteButton fa-solid fa-trash-can"></i></button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <h5 className="card-title">{record.remark}</h5> 
+                                                <h5 className="card-subtitle mb-2 text-body-secondary">Total: {new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(record.total)}</h5>
+                                                {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+                                                <span className="card-text">
+                                                    {record.filteredItems.map((item, itemIndex) => (
+                                                        <span key={itemIndex}>{item.currency} X {item.qty} : {new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(item.subtotal)}<br /></span>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                        </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                        ))
+                                    )}
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" onClick={handleCloseModalViewData}>Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             
             
             )}
