@@ -362,7 +362,7 @@ useEffect(() => {
 
             <div className='row satuRatusRinggit'>
                 <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM100.png" alt="RM50"></img> &nbsp; </div>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM100.png" alt="RM50"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 100</span></div>
                 </div>
                 <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM100minusButton}>-</button></div>
@@ -378,7 +378,7 @@ useEffect(() => {
 
             <div className='row limaPuluhRinggit'>
                 <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM50.png" alt="RM50"></img> &nbsp; </div>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM50.png" alt="RM50"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 50</span></div>
                 </div>
                 <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM50minusButton}>-</button></div>
@@ -394,7 +394,7 @@ useEffect(() => {
 
             <div className='row duaPuluhRinggit'>
                 <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM20.png" alt="RM20"></img> &nbsp; </div>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM20.png" alt="RM20"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 20</span></div>
                 </div>                    
                 <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM20minusButton}>-</button></div>
@@ -410,7 +410,7 @@ useEffect(() => {
 
             <div className='row sePuluhRinggit'>
                 <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM10.png" alt="RM10"></img> &nbsp; </div>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM10.png" alt="RM10"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 10</span></div>
                 </div>                    
                 <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM10minusButton}>-</button></div>
@@ -426,7 +426,7 @@ useEffect(() => {
 
             <div className='row limaRinggit'>
                 <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM5.png" alt="RM5"></img> &nbsp; </div>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM5.png" alt="RM5"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 5</span></div>
                 </div>                    
                 <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM5minusButton}>-</button></div>
@@ -442,7 +442,7 @@ useEffect(() => {
 
             <div className='row satuRinggit'>
                 <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuit" src="./DuitKertasRM1.png" alt="RM1"></img> &nbsp; </div>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM1.png" alt="RM1"></img> &nbsp; </div>
                     <div className='denomination'><span>RM 1</span></div>
                 </div>                    
                 <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM1minusButton}>-</button></div>
@@ -459,7 +459,7 @@ useEffect(() => {
             {showDuitSyiling && (
                 <div className='row limaPuluhSen'>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling50sen.png" alt="RM0.50"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling50sen.png" alt="RM0.50" style={{ height: "30px", width: "auto" }}></img> &nbsp; </div>
                         <div className='denomination'><span>50 sen</span></div>
                     </div> 
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen50minusButton}>-</button></div>
@@ -477,7 +477,7 @@ useEffect(() => {
             {showDuitSyiling && (
                 <div className='row duaPuluhSen'>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling20sen.png" alt="RM0.20"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling20sen.png" alt="RM0.20" style={{ height: "28px", width: "auto" }}></img> &nbsp; </div>
                         <div className='denomination'><span>20 sen</span></div>
                     </div> 
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen20minusButton}>-</button></div>
@@ -495,7 +495,7 @@ useEffect(() => {
             {showDuitSyiling && (
                 <div className='row sePuluhSen'>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling10sen.png" alt="RM0.10"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling10sen.png" alt="RM0.10" style={{ height: "25px", width: "auto" }}></img> &nbsp; </div>
                         <div className='denomination'><span>10 sen</span></div>
                     </div> 
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen10minusButton}>-</button></div>
@@ -514,7 +514,7 @@ useEffect(() => {
             {showDuitSyiling && (
                 <div className='row limaSen'>
                     <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuit" src="./DuitSyiling5sen.png" alt="RM0.05"></img> &nbsp; </div>
+                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling5sen.png" alt="RM0.05" style={{ height: "24px", width: "auto" }}></img> &nbsp; </div>
                         <div className='denomination'><span>5 sen</span></div>
                     </div> 
                     <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen5minusButton}>-</button></div>
@@ -575,7 +575,7 @@ useEffect(() => {
                                 <div className="titleAndClear">
                                     <div className="tacTitle"><h5 className="modal-title">View Records</h5></div>
                                     <div className="tacClear">
-                                        <button type="button" className="btn btn-outline-danger btn-sm" onClick={() => { handleClearAllRecord(); handleShowModalViewData() }}><i class="fa-solid fa-delete-left"></i> Delete All</button>
+                                        <button type="button" className="btn btn-outline-danger btn-sm" onClick={() => { handleClearAllRecord(); handleShowModalViewData() }}><i className="fa-solid fa-delete-left"></i> Delete All</button>
                                     </div>
                                 </div>
                                 

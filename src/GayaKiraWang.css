@@ -51,14 +51,8 @@
 .row {
     display:flexbox; 
     /* Use flexbox */
-
     flex-wrap: nowrap; 
     /* Ensure items don't wrap to the next line */
-
-    /* justify-content:space-evenly;  */
-    /* Distribute items evenly along the main axis */
-    /* justify-content: center; */
-
     align-items: center; 
     /* Center items vertically */
     gap: 5px;
@@ -71,7 +65,7 @@
 
 /* .col {
     
-    border: 0.5px solid;
+    border: 0.1px solid;
 } */
 
 .duit {
@@ -79,14 +73,28 @@
     justify-content:space-around;
     flex-wrap: nowrap;
     /* width: auto; */
-    min-width: 150px;
+    min-width: 170px;
 }
-.gambarDuit {
-    height: 27px;
+.gambarDuitKertas {
+    height: 30px;
+    width: 60px;
 }
-
-.banknote, .denomination {
-    display: inline-block;
+/* .gambarDuitSyiling {
+    height: 30px;
+    width: auto;
+} */
+.banknote {
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    margin: auto;
+}
+.denomination {
+    /* display: flex; */
+    /* justify-content: center; */
+    font-weight: 600;
+    align-items: center;
+    margin: auto;
 }
 
 .darabInput {
