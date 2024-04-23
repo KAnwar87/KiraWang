@@ -530,7 +530,7 @@ useEffect(() => {
             )}
 
 
-            <div className='total'>
+            <div className='row total'>
                 <span>Jumlah: <br />
                     <h4>
                         <strong>RM {new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(total)}

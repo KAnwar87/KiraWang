@@ -17,13 +17,10 @@
     text-align: center;
 }
 
-/* body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-} */
+body {
+    min-width:auto;
+    min-height: auto;
+}
 
 @media screen and (min-width: 768px) {
     .row {
