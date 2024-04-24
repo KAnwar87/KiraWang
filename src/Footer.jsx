@@ -19,8 +19,8 @@ const Footer = () => {
 
     return <footer>
         <span>{`© ${year}`} Khairul Anwar</span> &nbsp;
-        <button type="button" className="btn btn-dark" onClick={handleShowModal}>
-            <i className="fa-solid fa-info fa-2xs"></i>
+        <button type="button" className="btn btn-dark btn-sm" onClick={handleShowModal}>
+            <i className="fa-solid fa-info fa-xs"></i>
         </button>  &nbsp;
         <span className='credit'><a href="https://lovepik.com/images/png-malaysia.html" target='_blank'><em>Illustration by HappySnow on LovePik</em></a></span>
 
@@ -36,8 +36,11 @@ const Footer = () => {
                             <div className="modal-body">
                                 <span>
                                     Hai!<br /> 
-                                    Terima kasih kerana menggunakan calculator wang ini.<br /><br />
+                                    Terima kasih kerana menggunakan calculator Kira Wang ini.<br /><br />
+                                    Calculator ini saya bina semula menggunakan React berdasarkan hasil dari web https://kiraduitraya.com sebagai rujukan,<br />dan saya tambahkan fungsi baru seperti input manual untuk kuantiti, amaun bagi setiap denominasi wang serta simpan rekod hasil kiraan.<br /><br />
+
                                     Ini adalah sebahagian daripada projek personal saya dalam percubaan untuk memahirkan diri dalam web programming setelah selesai menjalani MERN Bootcamp pada 2023 anjuran KelasProgramming.com.<br /><br />
+
                                     Tech used in this project:<br /> 
                                     <i className="fa-brands fa-react"></i> <span className="badge rounded-pill bg-dark ">React</span>
                                     <i className="fa-brands fa-bootstrap"></i> <span className="badge rounded-pill bg-dark ">Bootstrap</span> &nbsp;<br />
