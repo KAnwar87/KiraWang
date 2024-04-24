@@ -568,7 +568,7 @@ useEffect(() => {
             )}
 
             {showModalViewData && (
-                <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+                <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block'}}>
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
