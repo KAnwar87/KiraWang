@@ -12,7 +12,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    margin: 5% auto;
+    /* max-width: max-content; */
+    margin: 3% auto;
     text-align: center;
 }
 
@@ -21,6 +22,12 @@ body {
     min-height: auto;
 }
 
+@media screen and (min-width: 768px) {
+    .row {
+        margin: 0 30%; 
+    }
+}
+/* Apply margin for tablet and larger media */
 
 .switchButton {
     display: flex;
@@ -46,10 +53,26 @@ body {
     /* Ensure items don't wrap to the next line */
     align-items: center; 
     /* Center items vertically */
+    gap: 5px;
     padding: 3px;
 }
 
+.minus, .plus {
+    max-width: fit-content;
+}
 
+/* .col {
+    
+    border: 0.1px solid;
+} */
+
+.duit {
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: nowrap;
+    /* width: auto; */
+    min-width: 170px;
+}
 .gambarDuitKertas {
     height: 30px;
     width: 60px;
@@ -58,37 +81,29 @@ body {
     height: 30px;
     width: auto;
 } */
-
-
-.xduit {
-    display: flex;
-    justify-content:space-around;
-    flex-wrap: nowrap;
-    /* width: auto; */
-    min-width: 170px;
-}
-.xbanknote {
+.banknote {
     /* display: flex; */
     /* justify-content: center; */
     align-items: center;
     margin: auto;
 }
-.xdenomination {
+.denomination {
     /* display: flex; */
     /* justify-content: center; */
     font-weight: 600;
     align-items: center;
     margin: auto;
 }
-.xdarabInput {
+
+.darabInput {
     min-width: 150px;
 }
-.xsubAmount {
-    text-align: right;
-    /* min-width: 80px; */
-    /* max-width: 150px; */
-}
 
+.subAmount {
+    text-align: right;
+    min-width: 80px;
+    max-width: 150px;
+}
 
 .bebutang button {
     margin-right: 10px; 
@@ -123,7 +138,7 @@ body {
 }
 
 footer {
-    position:absolute;
+    position: fixed;
     background-color:cadetblue;
     bottom: 0;
     left: 0;
@@ -132,7 +147,6 @@ footer {
     text-align: center;
     color:azure;
     font-size: small;
-    width:auto
 }
 .modal {
     color: black;

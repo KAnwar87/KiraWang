@@ -348,9 +348,9 @@ useEffect(() => {
     return (
         <>
         
-            <div className='titleAndSwitchButton'>
+            <div className='titleAndSwitchButton flex-wrap'>
                 <div><h2>Kira Wang</h2></div>
-                <div className='switchButton'>
+                <div className='switchButton col-12 col-md-3'>
                     <i className="fa-solid fa-money-bill-1-wave"></i> &nbsp; 
                     <div className="form-check form-switch">
                         <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={() => { setShowDuitSyiling(!showDuitSyiling); handleReset(); }} />
@@ -360,172 +360,173 @@ useEffect(() => {
                 </div>
             </div>
 
-            <div className='row satuRatusRinggit'>
-                <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM100.png" alt="RM50"></img> &nbsp; </div>
-                    <div className='denomination'><span>RM 100</span></div>
+            <div className='row satuRatusRinggit flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM100.png" alt="RM50"></img></div>
+                    <div className='denomination d-inline'><span>RM100</span></div>
                 </div>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM100minusButton}>-</button></div>
-                <div className='col darabInput d-flex align-items-center'>
+                <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                     <div className="input-group d-flex align-items-center">
+                        <button type="button" className="minus btn btn-outline-danger" onClick={handleRM100minusButton}>-</button>
                         <span className="input-group-text" id="darab100">X</span>
                         <input type="number" className="ringgitSen form-control text-center" id="rm100qty" min="0" value={rm100qty} onChange={handleRM100qtyChange} text-align="center"></input>
+                        <button type="button" className="plus btn btn-outline-primary" onClick={handleRM100plusButton}>+</button>
                     </div>
                 </div>
-                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM100plusButton}>+</button></div>
-                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM100)}</strong></div>
+                <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM100)}</strong>
+                </div>
             </div>
 
-            <div className='row limaPuluhRinggit'>
-                <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM50.png" alt="RM50"></img> &nbsp; </div>
-                    <div className='denomination'><span>RM 50</span></div>
+            <div className='row limaPuluhRinggit flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM50.png" alt="RM50"></img></div>
+                    <div className='denomination'><span>RM50</span></div>
                 </div>
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM50minusButton}>-</button></div>
-                <div className='col darabInput d-flex align-items-center'>
+                <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                     <div className="input-group d-flex align-items-center">
+                        <button type="button" className="minus btn btn-outline-danger" onClick={handleRM50minusButton}>-</button>
                         <span className="input-group-text" id="darab50">X</span>
                         <input type="number" className="ringgitSen form-control text-center" id="rm50qty" min="0" value={rm50qty} onChange={handleRM50qtyChange} text-align="center"></input>
+                        <button type="button" className="plus btn btn-outline-primary" onClick={handleRM50plusButton}>+</button>
                     </div>
                 </div>
-                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM50plusButton}>+</button></div>
-                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM50)}</strong></div>
+                <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM50)}</strong></div>
             </div>
 
-            <div className='row duaPuluhRinggit'>
-                <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM20.png" alt="RM20"></img> &nbsp; </div>
-                    <div className='denomination'><span>RM 20</span></div>
+            <div className='row duaPuluhRinggit flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM20.png" alt="RM20"></img></div>
+                    <div className='denomination'><span>RM20</span></div>
                 </div>                    
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM20minusButton}>-</button></div>
-                <div className='col darabInput d-flex align-items-center'>
+                <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                     <div className="input-group d-flex align-items-center">
+                        <button type="button" className="minus btn btn-outline-danger" onClick={handleRM20minusButton}>-</button>
                         <span className="input-group-text" id="darab20">X</span>
                         <input type="number" className="ringgitSen form-control text-center" id="rm20qty" min="0" value={rm20qty} onChange={handleRM20qtyChange} text-align="center"></input>
+                        <button type="button" className="btn btn-outline-primary" onClick={handleRM20plusButton}>+</button>
                     </div>
                 </div>
-                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM20plusButton}>+</button></div>
-                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM20)}</strong></div>
+                <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM20)}</strong></div>
             </div>
 
-            <div className='row sePuluhRinggit'>
-                <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM10.png" alt="RM10"></img> &nbsp; </div>
-                    <div className='denomination'><span>RM 10</span></div>
+            <div className='row sePuluhRinggit flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM10.png" alt="RM10"></img></div>
+                    <div className='denomination'><span>RM10</span></div>
                 </div>                    
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM10minusButton}>-</button></div>
-                <div className='col darabInput d-flex align-items-center'>
+                <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                     <div className="input-group d-flex align-items-center">
+                        <button type="button" className="minus btn btn-outline-danger" onClick={handleRM10minusButton}>-</button>
                         <span className="input-group-text" id="darab10">X</span>
                         <input type="number" className="ringgitSen form-control text-center" id="rm10qty" min="0" value={rm10qty} onChange={handleRM10qtyChange} text-align="center"></input>
+                        <button type="button" className="plus btn btn-outline-primary" onClick={handleRM10plusButton}>+</button>
                     </div>
                 </div>
-                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM10plusButton}>+</button></div>
-                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM10)}</strong></div>
+                <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM10)}</strong></div>
             </div>
 
-            <div className='row limaRinggit'>
-                <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM5.png" alt="RM5"></img> &nbsp; </div>
-                    <div className='denomination'><span>RM 5</span></div>
+            <div className='row limaRinggit flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM5.png" alt="RM5"></img></div>
+                    <div className='denomination'><span>RM5</span></div>
                 </div>                    
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM5minusButton}>-</button></div>
-                <div className='col darabInput d-flex align-items-center'>
+                <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                     <div className="input-group d-flex align-items-center">
+                        <button type="button" className="minus btn btn-outline-danger" onClick={handleRM5minusButton}>-</button>
                         <span className="input-group-text" id="darab5">X</span>
                         <input type="number" className="ringgitSen form-control text-center" id="rm5qty" min="0" value={rm5qty} onChange={handleRM5qtyChange} text-align="center"></input>
+                        <button type="button" className="plus btn btn-outline-primary" onClick={handleRM5plusButton}>+</button>
                     </div>
                 </div>
-                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM5plusButton}>+</button></div>
-                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM5)}</strong></div>
+                <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM5)}</strong></div>
             </div>
 
-            <div className='row satuRinggit'>
-                <div className='col duit'>
-                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM1.png" alt="RM1"></img> &nbsp; </div>
-                    <div className='denomination'><span>RM 1</span></div>
+            <div className='row satuRinggit flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                    <div className="banknote"><img className="gambarDuitKertas" src="./DuitKertasRM1.png" alt="RM1"></img></div>
+                    <div className='denomination'><span>RM1</span></div>
                 </div>                    
-                <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleRM1minusButton}>-</button></div>
-                <div className='col darabInput d-flex align-items-center'>
+                <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                     <div className="input-group d-flex align-items-center">
+                        <button type="button" className="minus btn btn-outline-danger" onClick={handleRM1minusButton}>-</button>
                         <span className="input-group-text" id="darab1">X</span>
                         <input type="number" className="ringgitSen form-control text-center" id="rm1qty" min="0" value={rm1qty} onChange={handleRM1qtyChange} text-align="center"></input>
+                        <button type="button" className="plus btn btn-outline-primary" onClick={handleRM1plusButton}>+</button>
                     </div>
                 </div>
-                <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleRM1plusButton}>+</button></div>
-                <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM1)}</strong></div>
+                <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subRM1)}</strong></div>
             </div>
 
             {showDuitSyiling && (
-                <div className='row limaPuluhSen'>
-                    <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling50sen.png" alt="RM0.50" style={{ height: "30px", width: "auto" }}></img> &nbsp; </div>
-                        <div className='denomination'><span>50 sen</span></div>
+                <div className='row limaPuluhSen flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                    <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling50sen.png" alt="RM0.50" style={{ height: "30px", width: "auto" }}></img></div>
+                        <div className='denomination'><span>50sen</span></div>
                     </div> 
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen50minusButton}>-</button></div>
-                    <div className='col darabInput d-flex align-items-center'>
+                    <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                         <div className="input-group d-flex align-items-center">
+                            <button type="button" className="minus btn btn-outline-danger" onClick={handleSen50minusButton}>-</button>
                             <span className="input-group-text" id="darabSen50">X</span>
                             <input type="number" className="ringgitSen form-control text-center" id="sen50qty" min="0" value={sen50qty} onChange={handleSen50qtyChange} text-align="center"></input>
+                            <button type="button" className="plus btn btn-outline-primary" onClick={handleSen50plusButton}>+</button>
                         </div>
                     </div>
-                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen50plusButton}>+</button></div>
-                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen50)}</strong></div>
+                    <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen50)}</strong></div>
                 </div>
             )}
 
             {showDuitSyiling && (
-                <div className='row duaPuluhSen'>
-                    <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling20sen.png" alt="RM0.20" style={{ height: "28px", width: "auto" }}></img> &nbsp; </div>
-                        <div className='denomination'><span>20 sen</span></div>
+                <div className='row duaPuluhSen flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                    <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling20sen.png" alt="RM0.20" style={{ height: "28px", width: "auto" }}></img></div>
+                        <div className='denomination'><span>20sen</span></div>
                     </div> 
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen20minusButton}>-</button></div>
-                    <div className='col darabInput d-flex align-items-center'>
+                    <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                         <div className="input-group d-flex align-items-center">
+                            <button type="button" className="minus btn btn-outline-danger" onClick={handleSen20minusButton}>-</button>
                             <span className="input-group-text" id="darabSen20">X</span>
                             <input type="number" className="ringgitSen form-control text-center" id="sen20qty" min="0" value={sen20qty} onChange={handleSen20qtyChange} text-align="center"></input>
+                            <button type="button" className="plus btn btn-outline-primary" onClick={handleSen20plusButton}>+</button>
                         </div>
                     </div>
-                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen20plusButton}>+</button></div>
-                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen20)}</strong></div>
+                    <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen20)}</strong></div>
                 </div>
             )}
 
             {showDuitSyiling && (
-                <div className='row sePuluhSen'>
-                    <div className='col duit'>
-                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling10sen.png" alt="RM0.10" style={{ height: "25px", width: "auto" }}></img> &nbsp; </div>
-                        <div className='denomination'><span>10 sen</span></div>
+                <div className='row sePuluhSen flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                    <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
+                        <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling10sen.png" alt="RM0.10" style={{ height: "25px", width: "auto" }}></img></div>
+                        <div className='denomination'><span>10sen</span></div>
                     </div> 
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen10minusButton}>-</button></div>
-                    <div className='col darabInput d-flex align-items-center'>
+                    <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                         <div className="input-group d-flex align-items-center">
+                            <button type="button" className="minus btn btn-outline-danger" onClick={handleSen10minusButton}>-</button>
                             <span className="input-group-text" id="darabSen10">X</span>
                             <input type="number" className="ringgitSen form-control text-center" id="sen10qty" min="0" value={sen10qty} onChange={handleSen10qtyChange} text-align="center"></input>
+                            <button type="button" className="plus btn btn-outline-primary" onClick={handleSen10plusButton}>+</button>
                         </div>
                     </div>
-                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen10plusButton}>+</button></div>
-                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen10)}</strong></div>
+                    <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen10)}</strong></div>
                 </div>
             )}
 
 
             {showDuitSyiling && (
-                <div className='row limaSen'>
-                    <div className='col duit'>
+                <div className='row limaSen flex-wrap' style={{alignItems:"center", justifyContent:"center"}}>
+                    <div className='col duit d-flex col-4 col-md-1' style={{alignItems:"center", justifyContent:"space-evenly", gap:"3px"}}>
                         <div className="banknote"><img className="gambarDuitSyiling" src="./DuitSyiling5sen.png" alt="RM0.05" style={{ height: "24px", width: "auto" }}></img> &nbsp; </div>
-                        <div className='denomination'><span>5 sen</span></div>
+                        <div className='denomination'><span>5sen</span></div>
                     </div> 
-                    <div className='col minus'><button type="button" className="btn btn-outline-danger" onClick={handleSen5minusButton}>-</button></div>
-                    <div className='col darabInput d-flex align-items-center'>
+                    <div className='col darabInput d-flex col-5 col-md-2' style={{flexWrap: "nowrap"}}>
                         <div className="input-group d-flex align-items-center">
+                            <button type="button" className="minus btn btn-outline-danger" onClick={handleSen5minusButton}>-</button>
                             <span className="input-group-text" id="darabSen5">X</span>
                             <input type="number" className="ringgitSen form-control text-center" id="sen5qty" min="0" value={sen5qty} onChange={handleSen5qtyChange} text-align="center"></input>
+                            <button type="button" className="plus btn btn-outline-primary" onClick={handleSen5plusButton}>+</button>
                         </div>
                     </div>
-                    <div className='col plus'><button type="button" className="btn btn-outline-primary" onClick={handleSen5plusButton}>+</button></div>
-                    <div className='col subAmount'><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen5)}</strong></div>
+                    <div className='col subAmount d-flex col-3 col-md-1' style={{justifyContent:"flex-end"}}><strong>{new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(subSen5)}</strong></div>
                 </div>
             )}
 
