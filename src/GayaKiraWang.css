@@ -12,13 +12,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    margin: 5% auto;
+    margin: 2% auto;
     text-align: center;
 }
 
 body {
     min-width:auto;
     min-height: auto;
+    overflow-x: hidden
 }
 
 
@@ -123,7 +124,7 @@ body {
 }
 
 footer {
-    position:absolute;
+    position:fixed;
     background-color:cadetblue;
     bottom: 0;
     left: 0;
@@ -132,7 +133,7 @@ footer {
     text-align: center;
     color:azure;
     font-size: small;
-    width:auto
+    width:auto;
 }
 .modal {
     color: black;
