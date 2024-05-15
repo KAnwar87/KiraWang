@@ -17,15 +17,11 @@
 }
 
 body {
-    /* min-width:auto; */
-    
+    min-width:auto;
+    min-height: auto;
     overflow-x: hidden
 }
 
-.content {
-    min-height: 100vh;
-    min-height: 100svh;
-}
 
 .switchButton {
     display: flex;
